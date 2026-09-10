@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Safety Equipment Checklist Portal</title>
+    <title>Employee Safety Equipment Checklist</title>
     <style>
         * {
             box-sizing: border-box;
@@ -27,14 +27,14 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        /* --- Company Header --- */
+        /* --- Header Section --- */
         .company-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #0056b3;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+            padding-bottom: 12px;
+            margin-bottom: 15px;
             gap: 15px;
         }
 
@@ -42,26 +42,30 @@
             flex: 1;
         }
 
+        /* Company Name Bada kiya gaya */
         .company-details input {
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             width: 100%;
             padding: 8px 10px;
             border: 1px dashed #aaa;
             border-radius: 6px;
             color: #0056b3;
             outline: none;
+            text-transform: uppercase;
         }
 
         .company-details p {
-            margin-top: 6px;
-            color: #666;
+            margin-top: 5px;
+            color: #555;
             font-size: 13px;
+            font-weight: 600;
         }
 
         .logo-box {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border: 2px dashed #0056b3;
             border-radius: 8px;
             display: flex;
@@ -84,20 +88,20 @@
             display: none;
         }
 
-        /* --- Employee Card --- */
+        /* --- Employee Card Section --- */
         .employee-card {
             display: flex;
             gap: 15px;
             background: #f8fafc;
             border: 1px solid #d9e2ec;
-            padding: 15px;
+            padding: 12px 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .emp-photo-box {
-            width: 110px;
-            height: 130px;
+            width: 100px;
+            height: 115px;
             border: 2px dashed #627d98;
             border-radius: 6px;
             display: flex;
@@ -122,7 +126,7 @@
         .emp-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 12px;
+            gap: 10px;
             width: 100%;
         }
 
@@ -131,15 +135,15 @@
             font-size: 12px;
             font-weight: 600;
             color: #334e68;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .form-group input, .form-group select {
             width: 100%;
-            padding: 9px;
+            padding: 8px;
             border: 1px solid #bcccdc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
             background: #fff;
         }
@@ -148,15 +152,15 @@
         .add-equipment-bar {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .add-equipment-bar input {
             flex: 1;
-            padding: 10px;
+            padding: 9px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 13px;
             outline: none;
         }
 
@@ -164,11 +168,11 @@
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 10px 18px;
+            padding: 9px 16px;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             white-space: nowrap;
         }
 
@@ -180,7 +184,7 @@
         .table-responsive {
             width: 100%;
             overflow-x: auto;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #dcdcdc;
             border-radius: 6px;
         }
@@ -193,16 +197,18 @@
 
         th, td {
             border-bottom: 1px solid #eee;
-            padding: 10px;
+            padding: 7px 10px;
             text-align: center;
             vertical-align: middle;
+            font-size: 13px;
         }
 
         th {
             background-color: #0056b3;
             color: white;
-            font-size: 13px;
+            font-size: 12px;
             white-space: nowrap;
+            padding: 9px 10px;
         }
 
         .item-name-cell {
@@ -212,8 +218,8 @@
         }
 
         .item-photo-upload {
-            width: 45px;
-            height: 45px;
+            width: 38px;
+            height: 38px;
             border: 1px dashed #888;
             border-radius: 4px;
             margin: 0 auto;
@@ -235,8 +241,8 @@
         }
 
         input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             accent-color: #28a745;
         }
@@ -245,10 +251,10 @@
             background: #e63946;
             color: white;
             border: none;
-            padding: 6px 10px;
+            padding: 5px 9px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .checked-row {
@@ -259,27 +265,27 @@
             display: none;
         }
 
-        /* --- Hindi Warning Box --- */
+        /* --- Warning Box (Only Hindi) --- */
         .warning-box {
             background-color: #fff9e6;
             border: 1px solid #ffeeba;
-            border-left: 5px solid #d32f2f;
-            padding: 14px 16px;
+            border-left: 4px solid #d32f2f;
+            padding: 10px 14px;
             border-radius: 6px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .warning-title {
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             color: #d32f2f;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .warning-box ul {
-            padding-left: 20px;
-            font-size: 13px;
-            line-height: 1.6;
+            padding-left: 18px;
+            font-size: 12px;
+            line-height: 1.45;
             color: #333;
         }
 
@@ -288,7 +294,7 @@
             display: flex;
             justify-content: space-between;
             gap: 20px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .sign-box {
@@ -299,39 +305,39 @@
 
         .sign-line {
             border-top: 1.5px dashed #444;
-            height: 45px;
+            height: 38px;
         }
 
         .sign-box p {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: bold;
             color: #333;
         }
 
         .sign-box span {
-            font-size: 11px;
+            font-size: 10px;
             color: #666;
             display: block;
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
-        /* --- Action Buttons --- */
+        /* --- Bottom Buttons --- */
         .bottom-actions {
             display: flex;
             justify-content: space-between;
-            gap: 15px;
-            margin-top: 25px;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .btn-print {
             background-color: #0056b3;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 11px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             flex: 1;
         }
 
@@ -339,15 +345,27 @@
             background-color: #6c757d;
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 11px 16px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             flex: 1;
         }
 
-        /* --- Mobile Responsiveness --- */
+        .btn-clear-all {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 11px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            flex: 1;
+        }
+
+        /* --- Responsive Styles --- */
         @media (max-width: 650px) {
             body {
                 padding: 8px;
@@ -361,7 +379,7 @@
                 text-align: center;
             }
             .company-details input {
-                font-size: 16px;
+                font-size: 18px;
                 text-align: center;
             }
             .employee-card {
@@ -369,8 +387,8 @@
                 align-items: center;
             }
             .emp-photo-box {
-                width: 120px;
-                height: 120px;
+                width: 110px;
+                height: 110px;
             }
             .emp-grid {
                 grid-template-columns: 1fr;
@@ -383,7 +401,7 @@
             }
             .signature-section {
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
                 align-items: center;
             }
             .sign-box {
@@ -395,35 +413,116 @@
             }
         }
 
-        /* --- Print Mode --- */
+        /* --- Strict Single-Page A4 Print Settings --- */
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm;
+        }
+
         @media print {
             body {
-                background: white;
-                padding: 0;
+                background: white !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
+
+            .container {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
             .add-equipment-bar, .bottom-actions, .btn-remove, th:last-child, td:last-child {
                 display: none !important;
             }
+
+            .company-header {
+                padding-bottom: 8px;
+                margin-bottom: 10px;
+            }
+
             .company-details input {
-                border: none;
-                padding: 0;
+                border: none !important;
+                padding: 0 !important;
+                font-size: 22px !important;
             }
-            .container {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                max-width: 100%;
+
+            .logo-box {
+                width: 75px !important;
+                height: 75px !important;
             }
+
+            .employee-card {
+                padding: 8px 12px !important;
+                margin-bottom: 10px !important;
+                background-color: #fcfcfc !important;
+            }
+
+            .emp-photo-box {
+                width: 85px !important;
+                height: 95px !important;
+            }
+
+            .form-group input, .form-group select {
+                padding: 5px !important;
+                font-size: 12px !important;
+                border: 1px solid #ddd !important;
+            }
+
             .table-responsive {
-                border: none;
-                overflow: visible;
+                border: 1px solid #ccc !important;
+                overflow: visible !important;
+                margin-bottom: 10px !important;
             }
+
             table {
-                min-width: 100%;
+                min-width: 100% !important;
             }
+
+            th, td {
+                padding: 5px 8px !important;
+                font-size: 11px !important;
+            }
+
+            .item-photo-upload {
+                width: 32px !important;
+                height: 32px !important;
+            }
+
+            .warning-box {
+                padding: 8px 12px !important;
+                margin-bottom: 15px !important;
+                background-color: #fff9e6 !important;
+            }
+
+            .warning-title {
+                font-size: 11px !important;
+                margin-bottom: 4px !important;
+            }
+
+            .warning-box ul {
+                font-size: 10.5px !important;
+                line-height: 1.35 !important;
+            }
+
             .signature-section {
                 display: flex !important;
                 flex-direction: row !important;
+                margin-top: 15px !important;
+            }
+
+            .sign-line {
+                height: 32px !important;
+            }
+
+            /* Single page lock: Force no page-breaks */
+            * {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
             }
         }
     </style>
@@ -435,37 +534,38 @@
     <!-- 1. Company Name & Logo -->
     <div class="company-header">
         <div class="company-details">
-            <input type="text" value="ABC CONSTRUCTION & ENGINEERING PVT. LTD." placeholder="Enter Company Name...">
+            <input type="text" id="companyName" placeholder="ENTER COMPANY NAME ..." oninput="handleCompanyInput(this)">
             <p>Safety & Personal Protective Equipment (PPE) Issuance Sheet</p>
         </div>
         
-        <label class="logo-box" title="Click to upload Company Logo">
-            <span id="logoText">+ Upload Logo</span>
+        <label class="logo-box" title="Click karke Company Logo upload karein">
+            <span id="logoText">+ Logo Upload</span>
             <img id="logoPreview" alt="Company Logo">
-            <input type="file" accept="image/*" onchange="previewImage(event, 'logoPreview', 'logoText')">
+            <input type="file" accept="image/*" onchange="handleImageUpload(event, 'logoPreview', 'logoText', 'saved_company_logo')">
         </label>
     </div>
 
     <!-- 2. Employee Profile Section -->
     <div class="employee-card">
-        <label class="emp-photo-box" title="Click to upload Employee Photo">
-            <span id="empText">+ Upload Photo</span>
+        <label class="emp-photo-box" title="Click karke Employee Photo upload karein">
+            <span id="empText">+ Employee Photo</span>
             <img id="empPreview" alt="Employee Photo">
-            <input type="file" accept="image/*" onchange="previewImage(event, 'empPreview', 'empText')">
+            <input type="file" accept="image/*" onchange="handleImageUpload(event, 'empPreview', 'empText', 'saved_emp_photo')">
         </label>
 
         <div class="emp-grid">
             <div class="form-group">
                 <label>Employee Name</label>
-                <input type="text" placeholder="Enter Full Name">
+                <!-- Ramesh wala placeholder hata diya gaya hai -->
+                <input type="text" id="empName" placeholder="Enter Employee Name" oninput="handleEmpNameInput(this)">
             </div>
             <div class="form-group">
                 <label>Mobile Number</label>
-                <input type="tel" placeholder="Enter Mobile Number">
+                <input type="tel" id="empMobile" placeholder="Enter Mobile Number" oninput="saveFieldValue('empMobile', this.value)">
             </div>
             <div class="form-group">
-                <label>Shoe Size</label>
-                <select>
+                <label>Shoes Size</label>
+                <select id="shoeSize" onchange="saveFieldValue('shoeSize', this.value)">
                     <option value="">Select Size</option>
                     <option>6</option>
                     <option>7</option>
@@ -477,7 +577,7 @@
             </div>
             <div class="form-group">
                 <label>Uniform Size</label>
-                <select>
+                <select id="uniformSize" onchange="saveFieldValue('uniformSize', this.value)">
                     <option value="">Select Size</option>
                     <option>S (36)</option>
                     <option>M (38)</option>
@@ -491,7 +591,7 @@
 
     <!-- 3. Add Custom Equipment Section -->
     <div class="add-equipment-bar">
-        <input type="text" id="newItemName" placeholder="Enter safety equipment name to add...">
+        <input type="text" id="newItemName" placeholder="Naya safety equipment add karein...">
         <button class="btn-add" onclick="addNewEquipment()">+ Add Equipment</button>
     </div>
 
@@ -500,20 +600,21 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 10%;">Sr. No.</th>
-                    <th style="width: 15%;">Photo</th>
+                    <th style="width: 8%;">Sr. No.</th>
+                    <th style="width: 14%;">Photo</th>
                     <th>Equipment Name</th>
-                    <th style="width: 15%;">Issued (✓)</th>
-                    <th style="width: 12%;">Action</th>
+                    <th style="width: 14%;">Issued (✓)</th>
+                    <th style="width: 10%;">Delete</th>
                 </tr>
             </thead>
             <tbody id="equipmentTableBody">
-                <!-- Loaded by JS -->
+                <!-- Javascript se load hoga -->
             </tbody>
         </table>
     </div>
 
-    <!-- 5. Hindi Warning / Undertaking Note Box -->
+    
+    <!-- 5. जरूरी सूचना / नियम एवं शर्तें -->
     <div class="warning-box">
         <div class="warning-title">⚠️ जरूरी सूचना / नियम एवं शर्तें</div>
         <ul>
@@ -528,6 +629,7 @@
         <div class="sign-box">
             <div class="sign-line"></div>
             <p>Employee Signature</p>
+            <span></span>
             <span>Date: ____________</span>
         </div>
 
@@ -541,45 +643,78 @@
 
     <!-- 7. Action Buttons -->
     <div class="bottom-actions">
-        <button class="btn-reset" onclick="resetChecklist()">Reset Checkboxes</button>
-        <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <button class="btn-reset" onclick="resetChecklist()">Uncheck All</button>
+        <button class="btn-clear-all" onclick="clearAllData()">Clear All Data</button>
+        <button class="btn-print" onclick="window.print()">🖨️ Print / Save PDF</button>
     </div>
 
 </div>
 
 <script>
-    // Default English equipment list
-    let equipmentList = [
-        "Safety Helmet",
+    const DEFAULT_EQUIPMENTS = [
+        "Helmet",
         "Reflective Jacket",
         "Safety Shoes",
         "Safety Gloves",
         "Safety Glasses",
         "Ear Plugs",
-        "Dust / Safety Mask",
-        "Work Uniform"
+        "Safety Mask",
+        "Uniform"
     ];
 
-    const tableBody = document.getElementById("equipmentTableBody");
+    let equipmentData = [];
+
+    function toTitleCase(str) {
+        return str.toLowerCase().replace(/(?:^|\s|\/|-)\w/g, function(match) {
+            return match.toUpperCase();
+        });
+    }
+
+    function handleCompanyInput(elem) {
+        elem.value = elem.value.toUpperCase();
+        localStorage.setItem("saved_company_name", elem.value);
+    }
+
+    function handleEmpNameInput(elem) {
+        const start = elem.selectionStart;
+        const end = elem.selectionEnd;
+        elem.value = toTitleCase(elem.value);
+        elem.setSelectionRange(start, end);
+        localStorage.setItem("saved_emp_name", elem.value);
+    }
+
+    function saveFieldValue(key, value) {
+        localStorage.setItem("saved_" + key, value);
+    }
+
+    function saveEquipmentsToStorage() {
+        try {
+            localStorage.setItem("saved_equipment_data", JSON.stringify(equipmentData));
+        } catch (e) {
+            console.warn("Storage limit warning: Image size might be too large.");
+        }
+    }
 
     function renderTable() {
+        const tableBody = document.getElementById("equipmentTableBody");
         tableBody.innerHTML = "";
-        equipmentList.forEach((item, index) => {
+
+        equipmentData.forEach((item, index) => {
             const row = document.createElement("tr");
-            row.id = `row-${index}`;
-            
+            if (item.checked) row.classList.add("checked-row");
+
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>
-                    <label class="item-photo-upload" title="Upload Photo">
-                        <span id="label-${index}">+ Photo</span>
-                        <img id="img-${index}" alt="${item}">
-                        <input type="file" accept="image/*" onchange="previewImage(event, 'img-${index}', 'label-${index}')">
+                    <label class="item-photo-upload" title="Photo upload karein">
+                        <span id="label-${index}" style="${item.image ? 'display:none;' : ''}">+ Photo</span>
+                        <img id="img-${index}" src="${item.image || ''}" style="${item.image ? 'display:block;' : 'display:none;'}">
+                        <input type="file" accept="image/*" onchange="handleItemImageUpload(event, ${index})">
                     </label>
                 </td>
-                <td class="item-name-cell">${item}</td>
+                <td class="item-name-cell">${item.name}</td>
                 <td>
-                    <input type="checkbox" onchange="toggleRow(this)">
+                    <input type="checkbox" ${item.checked ? "checked" : ""} onchange="toggleRowCheck(this, ${index})">
                 </td>
                 <td>
                     <button class="btn-remove" onclick="removeEquipment(${index})" title="Delete Item">✕</button>
@@ -589,18 +724,66 @@
         });
     }
 
-    function previewImage(event, imgId, textId) {
+    function fileToBase64(file, callback) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement("canvas");
+                const maxDim = 300;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > maxDim) {
+                        height *= maxDim / width;
+                        width = maxDim;
+                    }
+                } else {
+                    if (height > maxDim) {
+                        width *= maxDim / height;
+                        height = maxDim;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 0, 0, width, height);
+                callback(canvas.toDataURL("image/jpeg", 0.7));
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function handleImageUpload(event, imgId, textId, storageKey) {
         const file = event.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
+            fileToBase64(file, function(base64Data) {
                 const img = document.getElementById(imgId);
-                const textSpan = document.getElementById(textId);
-                img.src = e.target.result;
+                const span = document.getElementById(textId);
+                img.src = base64Data;
                 img.style.display = "block";
-                if(textSpan) textSpan.style.display = "none";
-            }
-            reader.readAsDataURL(file);
+                if (span) span.style.display = "none";
+
+                try {
+                    localStorage.setItem(storageKey, base64Data);
+                } catch (e) {
+                    alert("Image size badi hai, kripya chhoti photo upload karein.");
+                }
+            });
+        }
+    }
+
+    function handleItemImageUpload(event, index) {
+        const file = event.target.files[0];
+        if (file) {
+            fileToBase64(file, function(base64Data) {
+                equipmentData[index].image = base64Data;
+                saveEquipmentsToStorage();
+                renderTable();
+            });
         }
     }
 
@@ -608,24 +791,34 @@
         const input = document.getElementById("newItemName");
         const val = input.value.trim();
         if (!val) {
-            alert("Please enter equipment name!");
+            alert("Equipment ka naam enter karein!");
             return;
         }
-        equipmentList.push(val);
+
+        equipmentData.push({
+            name: toTitleCase(val),
+            checked: false,
+            image: ""
+        });
+
         input.value = "";
+        saveEquipmentsToStorage();
         renderTable();
     }
 
     function removeEquipment(index) {
-        if(confirm(`Are you sure you want to remove "${equipmentList[index]}"?`)) {
-            equipmentList.splice(index, 1);
+        if (confirm(`Kya aap "${equipmentData[index].name}" ko hatana chahte hain?`)) {
+            equipmentData.splice(index, 1);
+            saveEquipmentsToStorage();
             renderTable();
         }
     }
 
-    function toggleRow(checkbox) {
+    function toggleRowCheck(checkbox, index) {
+        equipmentData[index].checked = checkbox.checked;
+        saveEquipmentsToStorage();
         const row = checkbox.closest("tr");
-        if(checkbox.checked) {
+        if (checkbox.checked) {
             row.classList.add("checked-row");
         } else {
             row.classList.remove("checked-row");
@@ -633,14 +826,69 @@
     }
 
     function resetChecklist() {
-        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-            cb.checked = false;
-            cb.closest("tr").classList.remove("checked-row");
-        });
+        equipmentData.forEach(item => item.checked = false);
+        saveEquipmentsToStorage();
+        renderTable();
     }
 
-    // Load initial table
-    renderTable();
+    function clearAllData() {
+        if (confirm("Kya aap sabhi details, images aur checklist ko reset karna chahte hain?")) {
+            localStorage.clear();
+            location.reload();
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+        const savedCompany = localStorage.getItem("saved_company_name");
+        if (savedCompany) document.getElementById("companyName").value = savedCompany;
+
+        const savedEmpName = localStorage.getItem("saved_emp_name");
+        if (savedEmpName) document.getElementById("empName").value = savedEmpName;
+
+        const savedMobile = localStorage.getItem("saved_empMobile");
+        if (savedMobile) document.getElementById("empMobile").value = savedMobile;
+
+        const savedShoe = localStorage.getItem("saved_shoeSize");
+        if (savedShoe) document.getElementById("shoeSize").value = savedShoe;
+
+        const savedUniform = localStorage.getItem("saved_uniformSize");
+        if (savedUniform) document.getElementById("uniformSize").value = savedUniform;
+
+        const savedLogo = localStorage.getItem("saved_company_logo");
+        if (savedLogo) {
+            const logoImg = document.getElementById("logoPreview");
+            logoImg.src = savedLogo;
+            logoImg.style.display = "block";
+            document.getElementById("logoText").style.display = "none";
+        }
+
+        const savedEmpPhoto = localStorage.getItem("saved_emp_photo");
+        if (savedEmpPhoto) {
+            const empImg = document.getElementById("empPreview");
+            empImg.src = savedEmpPhoto;
+            empImg.style.display = "block";
+            document.getElementById("empText").style.display = "none";
+        }
+
+        const savedList = localStorage.getItem("saved_equipment_data");
+        if (savedList) {
+            try {
+                equipmentData = JSON.parse(savedList);
+            } catch (e) {
+                equipmentData = [];
+            }
+        }
+
+        if (!equipmentData || equipmentData.length === 0) {
+            equipmentData = DEFAULT_EQUIPMENTS.map(item => ({
+                name: item,
+                checked: false,
+                image: ""
+            }));
+        }
+
+        renderTable();
+    });
 </script>
 
 </body>
